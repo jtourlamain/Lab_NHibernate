@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MovieStore.Domain" namespace="MovieStore.Domain">
+  <class name="Movie">
+    <id name="Id">
+      <generator class ="native" />
+    </id>
+    <property name="Name" />
+    <property name="Description" />
+    <property name="ReleaseYear" />
+    <many-to-one name="Genre" column="Genre_Id" class="Genre" cascade="save-update" not-null="true" />
+    <set name="Actors" table="Movie_Actor" cascade="save-update">
+		<key column="Movie_Id" />
+		<many-to-many class="Actor" column="Actor_Id" />
+	</set>
+  </class>
+</hibernate-mapping>
+
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MovieStore.Domain" namespace="MovieStore.Domain">
+  <class name="Actor">
+    <id name="Id">
+      <generator class ="native" />
+    </id>
+    <property name="FirstName" />
+    <property name="LastName" />
+    <property name="BirthDate" />
+	<set name="Movies" table="Movie_Actor" cascade="save-update" inverse="true">
+		<key column="Actor_Id" />
+		<many-to-many class="Movie" column="Movie_Id" />
+	</set>
+  </class>
+</hibernate-mapping>
